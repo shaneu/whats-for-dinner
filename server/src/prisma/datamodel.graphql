@@ -1,0 +1,54 @@
+type User {
+  avatarURL: String!
+  email: String! @unique
+  firstName: String!
+  id: ID! @unique
+  lastName: String!
+  recipes: [Recipe!]! @relation(name: "UsersRecipes", onDelete: CASCADE)
+  userName: String!
+}
+
+enum Tag {
+  Easy
+  Filling
+  Fun
+  Healthy
+  Hearty
+  Quick
+  Simple
+  Spicy
+  Vegan
+  Vegetarian
+}
+
+type Recipe {
+  id: ID! @unique
+  title: String! @unique
+  description: String!
+  prepTime: String
+  cookTime: String
+  creator: User @relation(name: "UsersRecipes", onDelete: SET_NULL)
+  recipeSteps: [RecipeStep!]! @relation(name: "RecipeStep", onDelete: CASCADE)
+  ingredients: [IngredientAmount!]!
+  slug: String! @unique
+  tags: [Tag]!
+}
+
+type RecipeStep {
+  id: ID! @unique
+  recipe: Recipe! @relation(name: "RecipeStep", onDelete: SET_NULL)
+  stepNumber: Int!
+  instruction: String!
+}
+
+type IngredientAmount {
+  id: ID! @unique
+  ingredient: Ingredient
+  amount: String!
+  prep: String
+}
+
+type Ingredient {
+  id: ID! @unique
+  name: String! @unique
+}

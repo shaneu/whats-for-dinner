@@ -1,0 +1,54 @@
+# import Recipe from './generated/prisma.graphql'
+# import User from './generated/prisma.graphql'
+# import Recipe from './generated/prisma.graphql'
+
+input UserWhereUniqueInput {
+  email: String
+  id: ID
+}
+
+input RecipeWhereUniqueInput {
+  title: String
+  id: ID
+  slug: String
+}
+
+input RecipeWhereInput {
+  AND: [RecipeWhereInput!]
+  OR: [RecipeWhereInput!]
+  NOT: [RecipeWhereInput!]
+  id: ID
+  title: String
+  title_in: [String!]
+  title_contains: String
+  title_starts_with: String
+  description_contains: String
+  prepTime: String
+  prepTime_lt: String
+  prepTime_lte: String
+  prepTime_gt: String
+  prepTime_gte: String
+  cookTime: String
+  cookTime_not: String
+  cookTime_lt: String
+  cookTime_lte: String
+  cookTime_gt: String
+  cookTime_gte: String
+  creator: UserWhereInput
+}
+
+type Query {
+  recipe(where: RecipeWhereUniqueInput!): Recipe
+  recipes(where: RecipeWhereInput): [Recipe]!
+  user(where: UserWhereUniqueInput!): User
+}
+
+type Mutation {
+  createRecipe(
+    title: String!
+    description: String
+    prepTime: String
+    cookTime: String
+  ): Recipe
+  deleteRecipe(id: ID!): Recipe
+}

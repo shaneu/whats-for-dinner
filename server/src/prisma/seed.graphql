@@ -1,0 +1,195 @@
+mutation InitialSeed {
+  firstUser: createUser(
+    data: {
+      firstName: "Shane"
+      lastName: "Unger"
+      userName: "Shane Unger"
+      email: "shane.unger1@gmail.com"
+      avatarURL: "https://avatars2.githubusercontent.com/u/25601100?s=400&u=17b7c71bc3818cf504967ac7f11a613197fbce3a&v=4"
+    }
+  ) {
+    userName
+  }
+
+  secondUser: createUser(
+    data: {
+      firstName: "Nina"
+      lastName: "Iarkova"
+      userName: "Nina Iarkova"
+      email: "nina@gmail.com"
+      avatarURL: "https://avatars2.githubusercontent.com/u/2739658?s=400&v=4"
+    }
+  ) {
+    userName
+  }
+
+  quinoaPeppers: createRecipe(
+    data: {
+      cookTime: "1 h 20 m"
+      creator: { connect: { email: "shane.unger1@gmail.com" } }
+      description: "Filling, fun meal"
+      slug: "quinoa-stuffed-peppers"
+      tags: { set: [Filling, Fun, Vegetarian] }
+      title: "Quinoa Stuffed Peppers"
+      ingredients: {
+        create: [
+          {
+            amount: "1 cup"
+            prep: "rinsed and drained"
+            ingredient: { create: { name: "quinoa" } }
+          }
+          { amount: "2 cups", ingredient: { create: { name: "water" } } }
+          { amount: "2 tbsp", ingredient: { create: { name: "olive oil" } } }
+          {
+            amount: "1"
+            prep: "diced"
+            ingredient: { create: { name: "small onion" } }
+          }
+          {
+            amount: "2 cloves"
+            prep: "minced"
+            ingredient: { create: { name: "garlic" } }
+          }
+          {
+            amount: "1"
+            prep: "diced"
+            ingredient: { create: { name: "zucchini" } }
+          }
+          { amount: "1", ingredient: { create: { name: "small eggplant" } } }
+          {
+            amount: "1"
+            prep: "diced"
+            ingredient: { create: { name: "tomato" } }
+          }
+          { amount: "1 cup", ingredient: { create: { name: "tomato sauce" } } }
+          { amount: "1 tsp", ingredient: { create: { name: "salt" } } }
+          { amount: "1 tsp", ingredient: { create: { name: "pepper" } } }
+          {
+            amount: "6"
+            prep: "tops cut off and seeded"
+            ingredient: { create: { name: "bell peppers" } }
+          }
+          {
+            amount: "1 cup"
+            prep: "or more to taste"
+            ingredient: { create: { name: "shredded mozzarella" } }
+          }
+        ]
+      }
+      recipeSteps: {
+        create: [
+          {
+            stepNumber: 1
+            instruction: "Preheat oven to 350 degrees F (175 degrees C). Line a deep baking dish with aluminum foil."
+          }
+          {
+            stepNumber: 2
+            instruction: "Mix quinoa and water together in a saucepan; bring to a boil. Cover, reduce heat, and simmer until quinoa is tender and water is absorbed, about 15 minutes."
+          }
+          {
+            stepNumber: 3
+            instruction: "Heat olive oil in a large skillet over medium heat; cook and stir onion and garlic until fragrant and slightly translucent, 5 to 7 minutes. Add zucchini, eggplant, and tomato; cook until slightly tender, 3 to 5 minutes. Stir tomato sauce into vegetable mixture; cover and simmer until vegetables have softened, about 10 more minutes."
+          }
+          {
+            stepNumber: 4
+            instruction: "Stir quinoa into vegetable mixture. Season with salt and pepper. Fill bell peppers with quinoa-vegetable mixture. Place peppers in prepared baking dish. Cover dish with aluminum foil."
+          }
+          {
+            stepNumber: 5
+            instruction: "Bake in the preheated oven until bell peppers are slightly tender, about 18 minutes. Remove aluminum foil cover; sprinkle peppers with mozzarella cheese. Bake until cheese is bubbling and melted, about 5 more minutes."
+          }
+        ]
+      }
+    }
+  ) {
+    title
+  }
+
+  tortillaSoup: createRecipe(
+    data: {
+      title: "Vegetarian Tortilla Soup"
+      description: "hearty, filling, and very easy to prepare"
+      cookTime: "30 m"
+      prepTime: "30 m"
+      tags: { set: [Vegan, Easy, Fun] }
+      slug: "vegetarian-tortilla-soup"
+      creator: { connect: { email: "shane.unger1@gmail.com" } }
+      ingredients: {
+        create: [
+          { amount: "1", ingredient: { create: { name: "poblano pepper" } } }
+          { amount: "2 tbsp", ingredient: { connect: { name: "olive oil" } } }
+          {
+            amount: "1"
+            prep: "diced"
+            ingredient: { create: { name: "medium white onion" } }
+          }
+          {
+            amount: "2 cloves"
+            prep: "minced"
+            ingredient: { connect: { name: "garlic" } }
+          }
+          {
+            amount: "1 to 2"
+            prep: "optional, use one for medium spicy soup, 2 for spicy soup"
+            ingredient: { create: { name: "medium jalapeños" } }
+          }
+          { amount: "1 tsp", ingredient: { create: { name: "ground cumin" } } }
+          {
+            amount: "14 ounce"
+            prep: "diced"
+            ingredient: { create: { name: "canned crushed tomato" } }
+          }
+          {
+            amount: "4 cups"
+            ingredient: { create: { name: "vegetable stock" } }
+          }
+          {
+            amount: "14 ounce"
+            prep: "rinsed and drained"
+            ingredient: { create: { name: "canned hominy" } }
+          }
+          {
+            amount: "14 ounce"
+            prep: "rinsed and drained"
+            ingredient: { create: { name: "canned black beans" } }
+          }
+          { amount: "to taste", ingredient: { create: { name: "sea salt" } } }
+          { amount: "1", ingredient: { create: { name: "avocado" } } }
+          {
+            amount: "2 to 4"
+            prep: "sliced into thin rounds"
+            ingredient: { create: { name: "radishes" } }
+          }
+          {
+            amount: "2 ounces"
+            prep: "crumbled"
+            ingredient: { create: { name: "feta cheese" } }
+          }
+          {
+            amount: "2"
+            prep: "sliced into small wedges"
+            ingredient: { create: { name: "lime" } }
+          }
+        ]
+      }
+      recipeSteps: {
+        create: [
+          {
+            stepNumber: 1
+            instruction: "Prep work: Preheat the oven to 475 degrees Fahrenheit. Stack the tortillas and slice them into ½-inch-wide, 2-inch-long strips. Remove the seeds and membranes from the jalapeno (and poblano, if using) and chop the peppers. Wash your hands. Pit, peel, and medium dice the avocado, then squeeze some lime juice over the avocado to prevent browning."
+          }
+          {
+            stepNumber: 2
+            instruction: "Make the soup: In a medium pot or Dutch oven, heat some olive oil on medium until hot. Add the onion, garlic, jalapeno and poblano peppers (if using). Cook 4 to 5 minutes, or until softened, stirring occasionally. Stir in the cumin, then the canned tomatoes and vegetable stock. Simmer for about 3 minutes, then add the hominy, black beans and the seeded chili pepper. Cook for 8 to 10 minutes, or until slightly thickened, stirring occasionally. Season with salt and pepper to taste."
+          }
+          {
+            stepNumber: 3
+            instruction: "Serve the soup: First, discard the dried chili pepper. Place some of the avocado, radishes, tortilla strips, and queso fresco (or feta) at the bottom of 2 to 4 bowls. Divide the soup between the bowls. Top the soup with the remaining avocado, radishes, tortilla strips, and queso fresco (or feta). Garnish with some cilantro and serve with lime wedges and hot sauce, if desired."
+          }
+        ]
+      }
+    }
+  ) {
+    title
+  }
+}
